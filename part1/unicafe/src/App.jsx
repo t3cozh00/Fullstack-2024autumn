@@ -6,11 +6,10 @@ const Button = (props) => (
 );
 
 const Statistics = (props) => (
-  <div>
-    <p>
-      {props.text} {props.value}
-    </p>
-  </div>
+  <tr>
+    <td>{props.text}</td>
+    <td>{props.value}</td>
+  </tr>
 );
 
 const App = () => {
@@ -40,14 +39,27 @@ const App = () => {
     statisticsContent = <p>No feedback given</p>;
   } else {
     statisticsContent = (
-      <div>
-        <Statistics text="good" value={good} />
-        <Statistics text="neutral" value={neutral} />
-        <Statistics text="bad" value={bad} />
-        <p>all {allValue}</p>
-        <p>average {averageValue}</p>
-        <p>positive {positivePercentage}%</p>
-      </div>
+      <>
+        <table>
+          <tbody>
+            <Statistics text="good" value={good} />
+            <Statistics text="neutral" value={neutral} />
+            <Statistics text="bad" value={bad} />
+            <tr>
+              <td>all</td>
+              <td>{allValue}</td>
+            </tr>
+            <tr>
+              <td>average</td>
+              <td>{averageValue}</td>
+            </tr>
+            <tr>
+              <td>positive</td>
+              <td>{positivePercentage}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </>
     );
   }
 
