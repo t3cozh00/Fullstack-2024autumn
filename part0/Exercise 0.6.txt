@@ -1,0 +1,32 @@
+title Exercise 0.6
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+
+note over browser:
+browser starts executing spa.js
+that requests JSON data from server
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "Paljon onnea", date: "2024-08-26" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display without reloading the page
+end note
+
+User->browser: User creates a new note and submits it
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+server-->browser: {"message": "Note saved successfully"}
+
+note over browser:
+browser updates the notes list
+and renders the new note dynamically without reloading the page
+end note
+
