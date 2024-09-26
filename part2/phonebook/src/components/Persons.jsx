@@ -1,12 +1,15 @@
 import React from "react";
 
-export default function Persons({ personsToShow }) {
+export default function Persons({ personsToShow, deleteButton }) {
   return (
     <div>
       <ul>
-        {personsToShow.map((person, i) => (
-          <li style={{ listStyleType: "none" }} key={i}>
-            {person.name} {person.number}
+        {personsToShow.map((person) => (
+          <li style={{ listStyleType: "none" }} key={person.id}>
+            {person.name} {person.number}{" "}
+            <button onClick={() => deleteButton(person.id, person.name)}>
+              delete
+            </button>
           </li>
         ))}
       </ul>
